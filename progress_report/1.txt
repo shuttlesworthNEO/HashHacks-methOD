@@ -1,0 +1,9 @@
+1. Idea initiated.
+2. Started with working on the backend & the frontend simultaneously.
+3. Developement server up and running.
+4. Basic frontend UI updated.
+5. NLP for backend is ready.
+6. Backend framework is ready.
+7. Adding functionalities to the application.
+8. Working on backend.
+9. App icon and splash screen created.
