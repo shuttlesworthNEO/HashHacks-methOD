@@ -89,7 +89,6 @@ public class BookmarkFragment extends Fragment {
 
     private void getItemsFromDb() {
 
-
         if (items == null) {
             items = new ArrayList<>();
         }
@@ -105,7 +104,7 @@ public class BookmarkFragment extends Fragment {
 
         for (int i = 0; i < results.size(); i++) {
             Message m = gson.fromJson(results.get(i).getMessageJSON(), Message.class);
-            BookmarkItem bi = new BookmarkItem(m.getResult().getImageURL(), m.getResult().getSource(), m.getResult().getTitle(), m.getResult().getUrl());
+            BookmarkItem bi = new BookmarkItem(m.getResult().getId(), m.getResult().getImageURL(), m.getResult().getSource(), m.getResult().getTitle(), m.getResult().getUrl());
             items.add(bi);
         }
 
@@ -147,8 +146,7 @@ public class BookmarkFragment extends Fragment {
             holder.tvTitle.setText(items.get(position).getTitle());
             holder.tvUrl.setText(items.get(position).getUrl());
             holder.tvSource.setText(items.get(position).getSource());
-            Picasso.with(getContext()).load(items.get(position).getImageURL()).
-                    resize(200, 200).
+            Picasso.with(getContext()).load(items.get(position).getImageURL()).resize(200,200).placeholder(getContext().getDrawable(R.drawable.placeholder)).
                     into(holder.ivImage);
 
             holder.ib.setOnClickListener(new View.OnClickListener() {
@@ -165,9 +163,11 @@ public class BookmarkFragment extends Fragment {
                     Realm.init(getContext());
                     Realm realm = Realm.getDefaultInstance();
                     realm.beginTransaction();
-                    Log.d(TAG, "onLongClick: " );;
 
-                    realm.where(DBObject.class).contains("messageJSON", items.get(position).getTitle()).findFirst().deleteFromRealm();;
+                    Log.d(TAG, "onLongClick: " + realm.where(DBObject.class));
+
+                    realm.where(DBObject.class).contains("messageJSON", items.get(position).getId()).findFirst().deleteFromRealm();
+
                     realm.commitTransaction();
                     Toast.makeText(getContext(), "Unbookmarked", Toast.LENGTH_SHORT).show();
 
