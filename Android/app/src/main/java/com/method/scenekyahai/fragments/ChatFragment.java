@@ -162,6 +162,8 @@ public class ChatFragment extends Fragment {
 
     private void inputListener(MessageInput inputView) {
         inputView.setInputListener(new MessageInput.InputListener() {
+
+
             @Override
             public boolean onSubmit(CharSequence input) {
 
@@ -185,7 +187,7 @@ public class ChatFragment extends Fragment {
 
     private void sendToBackend(Message message) {
         Log.d(TAG, "sendToBackend: " + message.getText());
-        String url = "http://7efdc023.ngrok.io/";
+        String url = "http://e942cf7e.ngrok.io/";
         Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(url).build();
         MessageApi messageApi = retrofit.create(MessageApi.class);
 
