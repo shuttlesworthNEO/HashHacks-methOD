@@ -249,7 +249,7 @@ public class ChatFragment extends Fragment {
 
     private void sendToBackend(Message message) {
         Log.d(TAG, "sendToBackend: " + message.getText());
-        String url = "http://709b76af.ngrok.io/";
+        String url = "http://c0606bad.ngrok.io/";
         Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(url).build();
         MessageApi messageApi = retrofit.create(MessageApi.class);
 
