@@ -5,44 +5,10 @@
     android:layout_marginBottom="8dp"
     android:layout_marginTop="8dp">
 
-    <LinearLayout
 
-        android:orientation="horizontal"
-        android:id="@+id/description"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/resultImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="Crazy video must watch"
-                android:textStyle="bold"
-                android:id="@+id/resultTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:text="www.youtube.com"
-                android:id="@+id/resultSource"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
     <RelativeLayout
-        android:layout_below="@id/description"
+
         android:layout_width="250dp"
         android:layout_height="wrap_content">
 
@@ -52,7 +18,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:src="@drawable/test"
+
             android:visibility="gone" />
 
         <!--this view is needed for custom holder-->
@@ -74,6 +40,43 @@
             android:layout_marginEnd="0dp"
             android:layout_marginRight="30dp"
             android:orientation="vertical">
+
+            <LinearLayout
+
+                android:orientation="horizontal"
+                android:id="@+id/description"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:id="@+id/resultImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="Crazy video must watch"
+                        android:textStyle="bold"
+                        android:id="@+id/resultTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="www.youtube.com"
+                        android:id="@+id/resultSource"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@id/messageText"
