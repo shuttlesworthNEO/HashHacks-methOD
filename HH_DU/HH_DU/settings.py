@@ -26,8 +26,6 @@ SECRET_KEY = 'f9#cjk^$5pkp2(@^5)ma)y978(!)u#&m2y@g@)pz7(tw@f0ij*'
 DEBUG = True
 
 ALLOWED_HOSTS = [u'26d1bffa.ngrok.io']
-
-
 # Application definition
 
 INSTALLED_APPS = [

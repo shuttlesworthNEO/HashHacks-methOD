@@ -2,9 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.stfalcon.chatkit.messages.MessagesList
+        app:outcomingDefaultBubbleColor="#142B34"
+        app:incomingDefaultBubbleColor="#d3d3d3"
         android:id="@+id/messagesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,6 +17,10 @@
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:inputButtonHeight="80dp"
+        app:inputButtonWidth="80dp"
+        app:inputButtonBackground="@color/colorInputSend"
+        app:inputButtonIcon="@drawable/puneet_send_icon"
         android:layout_alignParentBottom="true"
         app:inputHint="Enter a message.." />
 
