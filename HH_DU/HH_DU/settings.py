@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [u'26d1bffa.ngrok.io']
 
-
 # Application definition
 
 INSTALLED_APPS = [

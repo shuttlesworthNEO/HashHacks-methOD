@@ -2,284 +2,289 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <!--Piyush-->
-
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="true">
+        android:orientation="vertical">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            style="@style/Widget.CardContent"
+        <!--Piyush-->
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="8dp"
+            app:cardElevation="10dp"
 
+            app:cardPreventCornerOverlap="true">
 
-            <ImageView
-                android:layout_width="@dimen/imagewidth"
-                android:layout_height="@dimen/imageheight"
-                android:src="@drawable/piyush0" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/Widget.CardContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:background="#d3d3d3"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:textSize="@dimen/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Piyush Ajmani"
-                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/imagewidth"
+                    android:layout_height="@dimen/imageheight"
+                    android:src="@drawable/piyush0" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:src="@drawable/github"
-                        android:layout_width="@dimen/githubimagewidth"
-                        android:layout_height="@dimen/githubimageheight" />
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:textSize="@dimen/githubPro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/piyush0" />
+                        android:text="Piyush Ajmani"
+                        android:textSize="@dimen/name"
+                        android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/githubimagewidth"
+                            android:layout_height="@dimen/githubimageheight"
+                            android:src="@drawable/github" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/piyush0"
+                            android:textSize="@dimen/githubPro" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Android developer"
+                        android:textSize="@dimen/designation" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:textSize="@dimen/designation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Android developer" />
 
             </LinearLayout>
 
 
-        </LinearLayout>
+        </android.support.v7.widget.CardView>
 
 
-    </android.support.v7.widget.CardView>
+        <!--Vasudev-->
 
-
-    <!--Vasudev-->
-
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="true">
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            style="@style/Widget.CardContent"
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="8dp"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="true">
 
-
-            <ImageView
-                android:layout_width="@dimen/imagewidth"
-                android:layout_height="@dimen/imageheight"
-                android:src="@drawable/vasu_dev" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/Widget.CardContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:background="#d3d3d3"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:textSize="@dimen/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Vasudev Singh"
-                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/imagewidth"
+                    android:layout_height="@dimen/imageheight"
+                    android:src="@drawable/vasu_dev" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:src="@drawable/github"
-                        android:layout_width="@dimen/githubimagewidth"
-                        android:layout_height="@dimen/githubimageheight" />
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:textSize="@dimen/githubPro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/vasu-dev" />
+                        android:text="Vasudev Singh"
+                        android:textSize="@dimen/name"
+                        android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/githubimagewidth"
+                            android:layout_height="@dimen/githubimageheight"
+                            android:src="@drawable/github" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/vasu-dev"
+                            android:textSize="@dimen/githubPro" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Backend Developer, Data Scientist"
+                        android:textSize="@dimen/designation" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:textSize="@dimen/designation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Data Scientist" />
-
             </LinearLayout>
 
-        </LinearLayout>
 
+        </android.support.v7.widget.CardView>
 
-    </android.support.v7.widget.CardView>
+        <!--Puneet-->
 
-    <!--Puneet-->
-
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="true">
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            style="@style/Widget.CardContent"
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="8dp"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="true">
 
-
-            <ImageView
-                android:layout_width="@dimen/imagewidth"
-                android:layout_height="@dimen/imageheight"
-                android:src="@drawable/shuttlesworthneo" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/Widget.CardContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:background="#d3d3d3"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:textSize="@dimen/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Puneet Gupta"
-                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/imagewidth"
+                    android:layout_height="@dimen/imageheight"
+                    android:src="@drawable/shuttlesworthneo" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:src="@drawable/github"
-                        android:layout_width="@dimen/githubimagewidth"
-                        android:layout_height="@dimen/githubimageheight" />
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:textSize="@dimen/githubPro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/shuttlesworthNEO" />
+                        android:text="Puneet Gupta"
+                        android:textSize="@dimen/name"
+                        android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/githubimagewidth"
+                            android:layout_height="@dimen/githubimageheight"
+                            android:src="@drawable/github" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/shuttlesworthNEO"
+                            android:textSize="@dimen/githubPro" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Backend Developer, Data Scientist"
+                        android:textSize="@dimen/designation" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:textSize="@dimen/designation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UI/UX Designer" />
 
             </LinearLayout>
 
 
-        </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!--Anmol-->
 
 
-    </android.support.v7.widget.CardView>
-
-    <!--Anmol-->
-
-
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="true">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            style="@style/Widget.CardContent"
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="8dp"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="true">
 
-
-            <ImageView
-                android:layout_width="@dimen/imagewidth"
-                android:layout_height="@dimen/imageheight"
-                android:src="@drawable/papajijaat" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/Widget.CardContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:background="#d3d3d3"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:textSize="@dimen/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Anmol Singh Mangat"
-                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/imagewidth"
+                    android:layout_height="@dimen/imageheight"
+                    android:src="@drawable/papajijaat" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:src="@drawable/github"
-                        android:layout_width="@dimen/githubimagewidth"
-                        android:layout_height="@dimen/githubimageheight" />
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:textSize="@dimen/githubPro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/papajijaat" />
+                        android:text="Anmol Singh Mangat"
+                        android:textSize="@dimen/name"
+                        android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/githubimagewidth"
+                            android:layout_height="@dimen/githubimageheight"
+                            android:src="@drawable/github" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/papajijaat"
+                            android:textSize="@dimen/githubPro" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UI/UX Developer"
+                        android:textSize="@dimen/designation" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:textSize="@dimen/designation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Backend developer" />
 
             </LinearLayout>
 
 
-        </LinearLayout>
-
-
-    </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>
