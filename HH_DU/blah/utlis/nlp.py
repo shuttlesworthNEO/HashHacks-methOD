@@ -11,5 +11,5 @@ def tokens(data):
 		if w not in stop_word:
 			resp.append(w)
 
-	return resp		
+	return resp
 			

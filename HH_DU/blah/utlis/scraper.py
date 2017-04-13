@@ -20,9 +20,12 @@ def response_render(temp):
 	query.append(twitter_scraper(data,temp))
 	query.append(reddit_scraper(data,temp))
 	temp_1, temp_2 = youtube_scraper(data)
+	temp_3, temp_4 = google_scraper(temp)
 	query.append(temp_1)
+	query.append(temp_3)
 	query.append(temp_2)
-
+	query.append(temp_4)
+	
 	return query
 
 
@@ -38,14 +41,32 @@ def response_render(temp):
 def scraper_duckduckgo(temp):
 	urls = []
 	count = 1
-	for link in duckduckgo.search(temp, max_results=24):
+	for link in duckduckgo.search(temp, max_results=8):
 		if count%4==0:
 			urls.append(link)
 			count += 1
 		else:
 			count += 1
-
 	return urls
+
+def google_scraper(temp):
+	link = scraper_duckduckgo(temp)
+	
+	ID = "kaisahai" + str(random.random())
+	url_1 = link[0]
+	image = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSlJ6i0MqP20vfAwE1bCofPt6bKDQ27NA_GUrtR28GYHq1Xf67P"
+	title_1 = link[0].split('/')[2]
+	source_1 = link[0].split('/')[2]
+	temp_1 = {'url' : url_1, 'imageURL': image, 'title':title_1,'source':source_1, 'id':ID}
+
+	ID = "kaisahai" + str(random.random())
+	url_2 = link[1]
+	image = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSlJ6i0MqP20vfAwE1bCofPt6bKDQ27NA_GUrtR28GYHq1Xf67P"
+	title_2 = link[1].split('/')[2]
+	source_2 = link[1].split('/')[2]
+	temp_2 = {'url' : url_1, 'imageURL': image, 'title':title_1,'source':source_1, 'id':ID}
+
+	return temp_1,temp_2 
 
 
 def twitter_scraper(data,xyz):
