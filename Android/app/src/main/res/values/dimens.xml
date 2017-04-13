@@ -6,4 +6,11 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="name">30sp</dimen>
+    <dimen name="githubimageheight">10dp</dimen>
+    <dimen name="githubimagewidth">10dp</dimen>
+    <dimen name="imageheight">100dp</dimen>
+    <dimen name="imagewidth">100dp</dimen>
+    <dimen name="designation">15sp</dimen>
+    <dimen name="githubPro">20sp</dimen>
 </resources>

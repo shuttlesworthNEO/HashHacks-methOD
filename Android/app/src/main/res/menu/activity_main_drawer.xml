@@ -2,17 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/grp1"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_bot"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_person_black_24dp"
             android:title="Chat Bot" />
         <item
             android:id="@+id/nav_bookmark"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Bookmark" />
+            android:icon="@drawable/ic_bookmark_border_black_24dp"
+            android:title="Bookmarks" />
 
     </group>
+
+    <group
+        android:id="@+id/grp2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_people_outline_black_24dp"
+            android:title="About Developers" />
+
+    </group>
+
 
 </menu>

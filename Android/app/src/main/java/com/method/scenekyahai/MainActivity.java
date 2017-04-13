@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.method.scenekyahai.fragments.AboutFragment;
 import com.method.scenekyahai.fragments.BookmarkFragment;
 import com.method.scenekyahai.fragments.ChatFragment;
 
@@ -99,6 +100,10 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_main,
                             BookmarkFragment.newInstance(1, "Page 2")).commit();
 
+        } else if (id == R.id.nav_about) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_main,
+                            AboutFragment.newInstance(2, "Page 3")).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
