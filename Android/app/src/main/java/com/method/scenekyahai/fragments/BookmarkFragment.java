@@ -3,6 +3,8 @@ package com.method.scenekyahai.fragments;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +41,7 @@ import static android.content.Context.CLIPBOARD_SERVICE;
  * Created by piyush0 on 13/04/17.
  */
 
-public class BookmarkFragment extends Fragment{
+public class BookmarkFragment extends Fragment {
 
     public static final String TAG = "BookFrag";
 
@@ -110,12 +113,12 @@ public class BookmarkFragment extends Fragment{
     }
 
 
-
     private class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvTitle, tvSource, tvUrl;
         ImageView ivImage;
         Button ib;
+        LinearLayout outer;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -135,6 +138,7 @@ public class BookmarkFragment extends Fragment{
             viewHolder.tvUrl = (TextView) view.findViewById(R.id.item_bookmark_tv_url);
             viewHolder.ivImage = (ImageView) view.findViewById(R.id.item_bookmark_iv_image);
             viewHolder.ib = (Button) view.findViewById(R.id.item_bookmark_btn_copy_url);
+            viewHolder.outer = (LinearLayout) view.findViewById(R.id.list_item_user_outerLayout);
             return viewHolder;
         }
 
@@ -150,7 +154,39 @@ public class BookmarkFragment extends Fragment{
             holder.ib.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    saveToClipboard(items.get(position).getUrl(),getContext());
+                    saveToClipboard(items.get(position).getUrl(), getContext());
+                }
+            });
+
+            holder.outer.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+
+                    Realm.init(getContext());
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    Log.d(TAG, "onLongClick: " );;
+
+                    realm.where(DBObject.class).contains("messageJSON", items.get(position).getTitle()).findFirst().deleteFromRealm();;
+                    realm.commitTransaction();
+                    Toast.makeText(getContext(), "Unbookmarked", Toast.LENGTH_SHORT).show();
+
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.content_main,
+                                    BookmarkFragment.newInstance(1, "Page 2")).commit();
+                    return false;
+                }
+            });
+
+            holder.outer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    String url = items.get(position).getUrl();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
+
                 }
             });
 

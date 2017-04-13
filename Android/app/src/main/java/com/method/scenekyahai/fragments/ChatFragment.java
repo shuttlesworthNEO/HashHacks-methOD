@@ -1,5 +1,8 @@
 package com.method.scenekyahai.fragments;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -27,6 +30,8 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.realm.Realm;
 import retrofit2.Call;
@@ -35,13 +40,17 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by piyush0 on 12/04/17.
  */
 
 public class ChatFragment extends Fragment {
+    public static final String URL_REGEX = "^((https?|ftp)://|(www|ftp)\\.)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?$";
 
     public static final String TAG = "ChatFrag";
+    public static final String FIRST_SHARED_PREFS = "FirstSp";
 
     String senderId;
     String botId;
@@ -52,6 +61,8 @@ public class ChatFragment extends Fragment {
     IUser bot;
     private String title;
     private int page;
+
+    SharedPreferences sharedPreferences;
 
     public static ChatFragment newInstance(int page, String title) {
         ChatFragment chatFragment = new ChatFragment();
@@ -65,6 +76,8 @@ public class ChatFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPreferences = getContext().getSharedPreferences(FIRST_SHARED_PREFS, MODE_PRIVATE);
 
         page = getArguments().getInt("someInt", 0);
         title = getArguments().getString("someTitle");
@@ -109,9 +122,7 @@ public class ChatFragment extends Fragment {
 
         inputListener(inputView);
         longClickListener(adapter);
-        loadMoreListener(adapter);
         messageClickListener(adapter);
-
     }
 
     private void longClickListener(MessagesListAdapter<Message> adapter) {
@@ -138,18 +149,16 @@ public class ChatFragment extends Fragment {
             @Override
             public void onMessageClick(Message message) {
 
+                if (message.getResult() != null) {
+                    String url = message.getResult().getUrl();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
+                }
             }
         });
     }
 
-    private void loadMoreListener(MessagesListAdapter<Message> adapter) {
-        adapter.setLoadMoreListener(new MessagesListAdapter.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount) {
-
-            }
-        });
-    }
 
     private void inputListener(MessageInput inputView) {
         inputView.setInputListener(new MessageInput.InputListener() {
@@ -161,15 +170,22 @@ public class ChatFragment extends Fragment {
                 }
                 Message message = new Message(new Date(), senderId, null, null, input.toString(), user);
                 adapter.addToStart(message, true);
+
                 sendToBackend(message);
+                storeQueryToDb(message);
+
                 return true;
             }
         });
     }
 
+    private void storeQueryToDb(Message message) {
+        sharedPreferences.edit().putString("query", message.getText()).commit();
+    }
+
     private void sendToBackend(Message message) {
         Log.d(TAG, "sendToBackend: " + message.getText());
-        String url = "http://144dd5c2.ngrok.io/";
+        String url = "http://7efdc023.ngrok.io/";
         Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(url).build();
         MessageApi messageApi = retrofit.create(MessageApi.class);
 
@@ -184,6 +200,9 @@ public class ChatFragment extends Fragment {
                     adapter.addToStart(reply, true);
                 }
 
+                Message reply = new Message(new Date(), botId, null, null, "What other topics are you interested in ?", bot);
+                adapter.addToStart(reply, true);
+
             }
 
             @Override
@@ -194,6 +213,19 @@ public class ChatFragment extends Fragment {
     }
 
     private void getGreetingMessages(View view) {
-    }
 
+
+        if (sharedPreferences.getString("query", "").equals("")) {
+            // First time
+            Message message = new Message(new Date(), botId, null, null, "Welcome to app", bot);//TODO: Randomize
+            adapter.addToStart(message, true);
+            message = new Message(new Date(), botId, null, null, "What topics are you interested in ? ", bot);
+            adapter.addToStart(message, true);
+        } else {
+            Message message = new Message(new Date(), senderId, null, null, sharedPreferences.getString("query", ""), user);
+            sendToBackend(message);
+            adapter.addToStart(message, true);
+        }
+
+    }
 }
