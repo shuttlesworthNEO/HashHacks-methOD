@@ -4,6 +4,6 @@
 4. ML files waiting to be deployed.
 5. NLP up and running.
 6. Backend is ready.
-7. Additional features meant to be added our own convinience.
+7. Additional features meant to be added at our own convinience.
 8. Basic debugging required.
 9. App is ready in BETA version.
