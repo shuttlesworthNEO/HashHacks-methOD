@@ -1,14 +1,17 @@
 package com.method.scenekyahai.fragments;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,6 +33,7 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,6 +44,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
@@ -51,6 +56,7 @@ public class ChatFragment extends Fragment {
 
     public static final String TAG = "ChatFrag";
     public static final String FIRST_SHARED_PREFS = "FirstSp";
+    private final int REQ_CODE_SPEECH_INPUT = 100;
 
     String senderId;
     String botId;
@@ -61,6 +67,9 @@ public class ChatFragment extends Fragment {
     IUser bot;
     private String title;
     private int page;
+
+
+    Button speech;
 
     SharedPreferences sharedPreferences;
 
@@ -88,9 +97,61 @@ public class ChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
+
+
         initChat(view);
+
+        speech = (Button) view.findViewById(R.id.btn_speech);
+
+
+        speech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                promptSpeechInput();
+            }
+        });
+
+
         getGreetingMessages(view);
         return view;
+    }
+
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                "Say Something");
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getContext(),
+                    "Sorry your device doesn't support speech",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+                    inputView.getInputEditText().setText(result.get(0));
+                }
+                break;
+            }
+            default:
+
+
+        }
     }
 
     public void initChat(View view) {
@@ -185,9 +246,10 @@ public class ChatFragment extends Fragment {
         sharedPreferences.edit().putString("query", message.getText()).commit();
     }
 
+
     private void sendToBackend(Message message) {
         Log.d(TAG, "sendToBackend: " + message.getText());
-        String url = "http://e942cf7e.ngrok.io/";
+        String url = "http://709b76af.ngrok.io/";
         Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(url).build();
         MessageApi messageApi = retrofit.create(MessageApi.class);
 
@@ -199,6 +261,7 @@ public class ChatFragment extends Fragment {
                 for (int i = 0; i < results.size(); i++) {
                     Result result = results.get(i);
                     Message reply = new Message(new Date(), botId, null, result, result.getUrl(), bot);
+
                     adapter.addToStart(reply, true);
                 }
 

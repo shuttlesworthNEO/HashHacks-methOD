@@ -14,7 +14,7 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter;
  */
 
 public class CustomIncomingTextMessageViewHolder extends MessagesListAdapter.IncomingMessageViewHolder<Message> {
-    private TextView tvTitle;
+    private TextView tvTitle, tvText;
     private TextView tvSource;
     private ImageView ivImage;
     private LinearLayout desc;
@@ -26,6 +26,7 @@ public class CustomIncomingTextMessageViewHolder extends MessagesListAdapter.Inc
         tvSource = (TextView) itemView.findViewById(R.id.resultSource);
         ivImage = (ImageView) itemView.findViewById(R.id.resultImage);
         desc = (LinearLayout) itemView.findViewById(R.id.description);
+        tvText = (TextView) itemView.findViewById(R.id.messageText);
     }
 
     @Override
@@ -35,6 +36,7 @@ public class CustomIncomingTextMessageViewHolder extends MessagesListAdapter.Inc
         if (message.getResult() != null) {
             desc.setVisibility(View.VISIBLE);
             tvTitle.setText(message.getResult().getTitle());
+            tvText.setVisibility(View.GONE);
             tvSource.setText(message.getResult().getSource());
 
             super.getImageLoader().loadImage(ivImage, message.getResult().getImageURL());
