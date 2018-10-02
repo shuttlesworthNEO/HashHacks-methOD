@@ -6,10 +6,10 @@ import json
 GOOGLE_URL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCS3e1_sTWaczMI1aGgxHaq7_NKJO-hnWo&cx=002365234770750778602:wapboucdge0&q="
 
 def scraper_google(dummy):
-	URL = GOOGLE_URL
+	url = GOOGLE_URL
 	for ix in dummy:
-		URL = URL + ix + "+"
+		url = url + ix + "+"
 
-	scraper_r = requests.get(URL)	
+	scraper_r = requests.get(url)	
 
-scraper_google(['stoner','memes'])	
+scraper_google(['it', 'is', '420','somewhere'])	
